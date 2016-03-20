@@ -4,9 +4,9 @@ Lyhimmän reitin löytäminen tulee viemään O(|E|) verran aikaa ja samoin myö
 Jos aikaa jää algoritmien toteutusten jälkeen, lisään ominaisuuden, jolloin voi antaa syötteenä labrintin koon. Mutta muuten näillä näkymin ohjelma ei saa syötteitä.   
 
 
-*Lähteet:*
-*https://en.wikipedia.org/wiki/Maze_generation_algorithm*
-*https://en.wikipedia.org/wiki/Maze_solving_algorithm*
-*https://en.wikipedia.org/wiki/A*_search_algorithm*
+*Lähteet:*  
+*https://en.wikipedia.org/wiki/Maze_generation_algorithm*  
+*https://en.wikipedia.org/wiki/Maze_solving_algorithm*  
+https://en.wikipedia.org/wiki/A*_search_algorithm  
 
 
