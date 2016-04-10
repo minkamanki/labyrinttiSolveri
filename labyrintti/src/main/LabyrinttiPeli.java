@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package labyrintti;
+package main;
+
+import labyrintti.Kayttoliittyma;
 
 /**
  *Mainin sisältävä luokka

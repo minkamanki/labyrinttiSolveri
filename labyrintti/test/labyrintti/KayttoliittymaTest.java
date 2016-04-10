@@ -38,7 +38,7 @@ public class KayttoliittymaTest {
 
     @Test
     public void sallittu4() {
-        assertEquals(kl.sallittu(9), false);
+        assertEquals(kl.sallittu(4), false);
     }
 
 }

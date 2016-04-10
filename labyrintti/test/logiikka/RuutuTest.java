@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package labyrintti;
+package logiikka;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,54 +19,41 @@ public class RuutuTest {
 
     @Before
     public void setUp() {
-    }
-
-    @Test
-    public void luonti1() {
-        ruutu = new Ruutu(true, false, true);
-        assertEquals(true, ruutu.isSeina());
+        ruutu = new Ruutu();
     }
 
     @Test
     public void luonti2() {
-        ruutu = new Ruutu(true, false, true);
         assertEquals(false, ruutu.isValittu());
     }
 
     @Test
     public void luonti3() {
-        ruutu = new Ruutu(true, false, true);
+        ruutu.setMaali(true);
         assertEquals(true, ruutu.isMaali());
     }
 
     @Test
     public void luonti4() {
-        ruutu = new Ruutu(false, true, false);
+        ruutu.setLahto(true);
         assertEquals(true, ruutu.isValittu());
     }
 
     @Test
     public void luonti5() {
-        ruutu = new Ruutu(false, true, false);
+        ruutu.setMaali(true);
+        ruutu.setMaali(false);
         assertEquals(false, ruutu.isMaali());
     }
 
     @Test
-    public void luonti6() {
-        ruutu = new Ruutu(false, true, false);
-        assertEquals(false, ruutu.isSeina());
-    }
-
-    @Test
-    public void vaihto() {
-        ruutu = new Ruutu(false, false, false);
-        ruutu.setLahto(true);
-        assertEquals(true, ruutu.isValittu());
+    public void vaihto() {       
+        assertEquals(false, ruutu.isMaali());
     }
     
     @Test
     public void vaihto2() {
-        ruutu = new Ruutu(false, true, false);
+        ruutu.setLahto(true);
         ruutu.setLahto(false);
         assertEquals(false, ruutu.isValittu());
     }

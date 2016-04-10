@@ -5,6 +5,7 @@
  */
 package labyrintti;
 
+import logiikka.Labyrintti;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
@@ -21,6 +22,7 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements MouseListener {
     private JFrame frame;
     private JButton ok;
+    private JButton ratkaise;
     private JTextArea kentta;
     private int koko;
     private Labyrintti labyrintti;
@@ -34,8 +36,7 @@ public class Kayttoliittyma implements MouseListener {
 
         kentta = new JTextArea();
         ok = new JButton("OK");
-        Font font = new Font("Verdana", Font.BOLD, 25);
-        kentta.setFont(font);
+        kentta.setFont(new Font("monospaced", Font.BOLD, 25));
 
         frame.add(kentta, BorderLayout.CENTER);
         frame.add(ok, BorderLayout.SOUTH);
@@ -62,6 +63,10 @@ public class Kayttoliittyma implements MouseListener {
         frame.setTitle("Miinaharava");
 
         frame.setSize((koko * 20) + 42, (koko * 20) + 80);
+        ratkaise = new JButton("Näytä ratkaisu");
+        frame.add(ratkaise, BorderLayout.SOUTH);
+        
+        ratkaise.addMouseListener(this);
         frame.setVisible(true);
     }
 
@@ -71,7 +76,7 @@ public class Kayttoliittyma implements MouseListener {
      * @return boolean onko annettu koko sallittu
      */
     public boolean sallittu(int koko) {
-        if (koko < 41 && koko > 9) {
+        if (koko < 41 && koko > 4) {
             return true;
         }
         return false;
@@ -90,12 +95,16 @@ public class Kayttoliittyma implements MouseListener {
                     labyrintti = new Labyrintti(koko);
                     kentanLuonti();
                 } else {
-                    kentta.setText("Anna koko 10 - 40");
+                    kentta.setText("Anna koko 5 - 40");
                 }
             } catch (NumberFormatException nfe) {
                 kentta.setText("Vain numerot kelpaavat");
             }
 
+        }
+        
+        if(me.getSource() == ratkaise){
+            ratkaise.setText("Ei toimi vielä :D");
         }
     }
 
