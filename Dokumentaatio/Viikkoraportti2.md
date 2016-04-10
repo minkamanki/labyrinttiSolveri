@@ -10,3 +10,4 @@ Tällä viikolla opin paljon erillaisista Maxe generating algoritmeistä. Tutkin
 
 Paljon vaikeuksia oli ymmärtää "monimutkaista" koodia, ja välillä oli vaikea ymmärtää mitä omassa koodissani edes tapahtui, koska rekursio. Lisäksi drawLine() metodin kanssa sai säätää aika paljon, koska graaffista puolta on myös välillä vähän vaikea hahmottaa. Vaikeuksia on ollut myös tietorakenteiden suhteen, koska en oikein hahmota voisiko joitain ominaisuuksia korvats tietorakenteilla ja miten. Esim. taulukkoa tai Set:iä. Ainakin ensi viikolla kuitenkin tulee se puu.   
 
+tunnit: 3h + 4h + 8h = 15h
