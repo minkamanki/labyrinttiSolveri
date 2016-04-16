@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  */
 public class Piirtoalusta extends JPanel {
 
-    private Labyrintti labyrintti;
+    private final Labyrintti labyrintti;
 
     /**
      * Konstruktori.

@@ -5,49 +5,55 @@
  */
 package logiikka;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
- *Luokassa on Ruutu olion tiedot.
+ * Luokassa on Ruutu olion tiedot.
+ *
  * @author tminka
  */
 public class Ruutu {
-    private Set<Ruutu> naapurit;
+
+    private List<Ruutu> naapurit;
     private boolean valittu;
     private boolean maali;
     private boolean visited;
-    
-    
+    private boolean reitti;
+
     /**
-     *Konstruktori.
-     * 
+     * Konstruktori.
+     *
      */
-    public Ruutu(){
+    public Ruutu() {
         visited = false;
-        naapurit = new HashSet();
+        reitti = false;
+        naapurit = new ArrayList();
     }
 
     /**
-     *Setteri.
+     * Setteri.
+     *
      * @param lahto
      */
     public void setLahto(boolean lahto) {
         this.valittu = lahto;
     }
-    
 
     /**
-     *Setteri.
+     * Setteri.
+     *
      * @param maali
      */
-        public void setMaali(boolean maali) {
+    public void setMaali(boolean maali) {
         this.maali = maali;
     }
 
-    
     /**
-     *Getteri.
+     * Getteri.
+     *
      * @return
      */
     public boolean isValittu() {
@@ -55,7 +61,8 @@ public class Ruutu {
     }
 
     /**
-     *Getteri.
+     * Getteri.
+     *
      * @return
      */
     public boolean isMaali() {
@@ -63,24 +70,27 @@ public class Ruutu {
     }
 
     /**
-     *Lisätään uusi kultuyhteys.
+     * Lisätään uusi kultuyhteys.
+     *
      * @param ruutu
      */
-    public void addNaapurit(Ruutu ruutu){
+    public void addNaapurit(Ruutu ruutu) {
         naapurit.add(ruutu);
     }
 
     /**
-     *Metodi kertoo, onko ruuduilla kulkuyhteys toisiinsa.
+     * Metodi kertoo, onko ruuduilla kulkuyhteys toisiinsa.
+     *
      * @param ruutu
      * @return onko kulkuyhteys
      */
-    public boolean isNaapuri(Ruutu ruutu){
-      return naapurit.contains(ruutu);
+    public boolean isNaapuri(Ruutu ruutu) {
+        return naapurit.contains(ruutu);
     }
 
     /**
-     *Metodi kertoo onko tässä ruudussa jo käyty labyrintin luonnin aikana.
+     * Metodi kertoo onko tässä ruudussa jo käyty labyrintin luonnin aikana.
+     *
      * @return onko käyty
      */
     public boolean isVisited() {
@@ -88,12 +98,24 @@ public class Ruutu {
     }
 
     /**
-     *Asetetaan ruutu käydyksi.
+     * Asetetaan ruutu käydyksi.
+     *
      * @param visited
      */
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
 
-    
+    public void setReitti(boolean reitti) {
+        this.reitti = reitti;
+    }
+
+    public boolean isReitti() {
+        return reitti;
+    }
+
+    public List<Ruutu> getNaapurit() {
+        return naapurit;
+    }
+
 }
