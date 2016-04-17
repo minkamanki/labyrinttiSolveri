@@ -5,10 +5,6 @@
  */
 package logiikka;
 
-import java.util.HashSet;
-import java.util.Set;
-import tietorakenteet.Puu;
-import tietorakenteet.Solmu;
 
 /**
  * Luokassa luodaan labyrintti, ja se sisältää taulukon Ruutu oliosta.
@@ -20,7 +16,6 @@ public class Labyrintti {
     private final int koko;
     private Ruutu[][] alue;
     
-    private Puu puu;
 
     /**
      * Konstruktori.
@@ -44,7 +39,6 @@ public class Labyrintti {
                 alue[i][j] = new Ruutu();
             }
         }
-        puu = new Puu();
         poistaSeinia(0, 0);
         alue[0][0].setLahto(true);
         alue[koko - 1][koko - 1].setMaali(true);

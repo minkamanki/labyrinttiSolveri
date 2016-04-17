@@ -5,10 +5,7 @@
  */
 package logiikka;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import tietorakenteet.taulukkoLista;
 
 /**
  * Luokassa on Ruutu olion tiedot.
@@ -17,7 +14,7 @@ import java.util.Set;
  */
 public class Ruutu {
 
-    private List<Ruutu> naapurit;
+    private taulukkoLista naapurit;
     private boolean valittu;
     private boolean maali;
     private boolean visited;
@@ -30,7 +27,7 @@ public class Ruutu {
     public Ruutu() {
         visited = false;
         reitti = false;
-        naapurit = new ArrayList();
+        naapurit = new taulukkoLista(3);
     }
 
     /**
@@ -75,7 +72,7 @@ public class Ruutu {
      * @param ruutu
      */
     public void addNaapurit(Ruutu ruutu) {
-        naapurit.add(ruutu);
+        naapurit.lisaa(ruutu);
     }
 
     /**
@@ -106,16 +103,28 @@ public class Ruutu {
         this.visited = visited;
     }
 
+    /**
+     *
+     * @param reitti
+     */
     public void setReitti(boolean reitti) {
         this.reitti = reitti;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isReitti() {
         return reitti;
     }
 
-    public List<Ruutu> getNaapurit() {
-        return naapurit;
+    /**
+     *
+     * @return
+     */
+    public Object[] getNaapurit() {
+        return  naapurit.getLista();
     }
 
 }

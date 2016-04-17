@@ -5,12 +5,11 @@
  */
 package logiikka;
 
-import java.util.Set;
 import tietorakenteet.Puu;
 import tietorakenteet.Solmu;
 
 /**
- * Luokka joka ratkaisee reitin
+ * Luokka joka ratkaisee reitin ja luo myös puun.
  *
  * @author tminka
  */
@@ -19,30 +18,49 @@ public class Ratkaisija {
     Ruutu[][] ruudut;
     private Puu puu;
 
+    /**
+     *Konstruktori.
+     * @param alue
+     */
     public Ratkaisija(Ruutu[][] alue) {
         ruudut = alue;
+        puu = new Puu();
     }
 
+    /**
+     *Metodi luo puun annetussta taulukosta.
+     */
     public void luoPuu() {
         Solmu juuri = new Solmu(ruudut[0][0]);
-        puu.setSolmu(juuri);
-        for (Ruutu ruutu : ruudut[0][0].getNaapurit()) {
-            Solmu lapsi = new Solmu(ruutu);
-            juuri.setLapset(lapsi);
-            lapsi.setParent(juuri);
-            luoSolmu(lapsi);
+        puu.setjuuri(juuri);
+        
+        for (int i = 0; i < juuri.getRuutu().getNaapurit().length; i++) {
+            if(juuri.getRuutu().getNaapurit()[i] != null){
+                Solmu lapsi = new Solmu((Ruutu) juuri.getRuutu().getNaapurit()[i]);
+                juuri.setLapset(lapsi);
+                lapsi.setParent(juuri);
+                luoSolmu(lapsi);
+            }
         }
+        
+    
     }
 
+    /**
+     *Luodaan puuhun solmuja rekursiolla.
+     * @param solmu
+     */
     public void luoSolmu(Solmu solmu) {
-        for (Ruutu ruutu : ruudut[0][0].getNaapurit()) {
-            if (solmu.getParent().getRuutu() != ruutu) {
-                Solmu lapsi = new Solmu(ruutu);
+        for (int i = 0; i < solmu.getRuutu().getNaapurit().length; i++) {
+            if(solmu.getRuutu().getNaapurit()[i] != null && !solmu.getRuutu().getNaapurit()[i].equals(solmu.getParent().getRuutu())){
+                Solmu lapsi = new Solmu((Ruutu) solmu.getRuutu().getNaapurit()[i]);
                 solmu.setLapset(lapsi);
                 lapsi.setParent(solmu);
                 luoSolmu(lapsi);
             }
-
         }
+
     }
+    
+ 
 }

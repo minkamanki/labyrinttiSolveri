@@ -5,45 +5,67 @@
  */
 package tietorakenteet;
 
-import java.util.HashSet;
-import java.util.Set;
 import logiikka.Ruutu;
 
 /**
- *
+ *Puun solmua kuvaava luokka.
  * @author tminka
  */
 public class Solmu {
 
     private Solmu parent;
-    private Set<Solmu> lapset;
+    private taulukkoLista lapset;
     private final Ruutu ruutu;
 
+    /**
+     *Konstruktoriin annetaan ruutu, jota solmu kuvaa.
+     * @param ruutu
+     */
     public Solmu(Ruutu ruutu) {
         this.ruutu = ruutu;
-        lapset = new HashSet();
+        lapset = new taulukkoLista(3);
     }
 
+    /**
+     *Asettetaan solmun parent solmu.
+     * @param parent
+     */
     public void setParent(Solmu parent) {
         this.parent = parent;
     }
 
+    /**
+     *getteri
+     * @return parent
+     */
     public Solmu getParent() {
         return parent;
     }
 
-    public Set<Solmu> getLapset() {
-        return lapset;
+    /**
+     *palautettaan lapset.
+     * @return
+     */
+    public Object[] getLapset() {
+        return lapset.getLista();
     }
 
+    /**
+     *Palautettaan solmun ruutu.
+     * @return
+     */
     public Ruutu getRuutu() {
         return ruutu;
     }
 
+    /**
+     *Asetetaan uusi lapsi.
+     * @param lapsi
+     */
     public void setLapset(Solmu lapsi) {
-        this.lapset.add(lapsi);
+        this.lapset.lisaa(lapsi);
     }
-    
+
     
 
 }

@@ -17,28 +17,43 @@ public class RuutuTest {
 
     private Ruutu ruutu;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         ruutu = new Ruutu();
     }
 
+    /**
+     *
+     */
     @Test
     public void luonti2() {
         assertEquals(false, ruutu.isValittu());
     }
 
+    /**
+     *
+     */
     @Test
     public void luonti3() {
         ruutu.setMaali(true);
         assertEquals(true, ruutu.isMaali());
     }
 
+    /**
+     *
+     */
     @Test
     public void luonti4() {
         ruutu.setLahto(true);
         assertEquals(true, ruutu.isValittu());
     }
 
+    /**
+     *
+     */
     @Test
     public void luonti5() {
         ruutu.setMaali(true);
@@ -46,11 +61,17 @@ public class RuutuTest {
         assertEquals(false, ruutu.isMaali());
     }
 
+    /**
+     *
+     */
     @Test
     public void vaihto() {       
         assertEquals(false, ruutu.isMaali());
     }
     
+    /**
+     *
+     */
     @Test
     public void vaihto2() {
         ruutu.setLahto(true);

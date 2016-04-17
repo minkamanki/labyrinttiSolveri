@@ -5,39 +5,54 @@
  */
 package tietorakenteet;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
 import logiikka.Ruutu;
 
 /**
- *
+ *Puun tietorakenne.
  * @author tminka
  */
 public class Puu {
 
-    private final List<Solmu> solmut;
+    private Solmu juuri;
 
-    public Puu() {
-        solmut = new ArrayList();
+
+    /**
+     *Etsitääb solmu, johon kyseinen ruutu viittaa.
+     * @param ruutu
+     * @return etsitty solmu
+     */
+    public Solmu getSolmu(Ruutu ruutu) {
+        if (juuri.getRuutu() == ruutu) {
+            return juuri;
+        }
+        for (Object solmu : juuri.getLapset()) {
+            return etsiSolmu((Solmu) solmu, ruutu);
+        }
+        return null;
+
     }
 
-    public Solmu getSolmu(Ruutu ruutu) {
+    /**
+     *Asetetaan puulle juuri.
+     * @param solmu
+     */
+    public void setjuuri(Solmu solmu) {
+        this.juuri = solmu;
+    }
 
-        for (Solmu s : solmut) {
-            if (s.getRuutu() == ruutu) {
-                return s;
+    private Solmu etsiSolmu(Solmu solmu, Ruutu ruutu) {
+        if (solmu.getLapset() != null) {
+            if (solmu.getRuutu() == ruutu) {
+                return solmu;
+            } else {
+                for (Object lapsi : solmu.getLapset()) {
+                    return etsiSolmu((Solmu) lapsi, ruutu);
+                }
             }
         }
-        
-        //jälkimmäisen ei pitäisi ikinä tapahtua
-        Solmu x = new Solmu(ruutu);
-        return x;
-    }
 
-    public void setSolmu(Solmu solmu) {
-        this.solmut.add(solmu);
+        return null;
     }
 
 }
