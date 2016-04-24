@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logiikka;
+package pelilogiikka;
 
-import tietorakenteet.taulukkoLista;
+import tietorakenteet.TaulukkoLista;
 
 /**
  * Luokassa on Ruutu olion tiedot.
@@ -14,7 +14,7 @@ import tietorakenteet.taulukkoLista;
  */
 public class Ruutu {
 
-    private taulukkoLista naapurit;
+    private TaulukkoLista naapurit;
     private boolean valittu;
     private boolean maali;
     private boolean visited;
@@ -27,13 +27,13 @@ public class Ruutu {
     public Ruutu() {
         visited = false;
         reitti = false;
-        naapurit = new taulukkoLista(3);
+        naapurit = new TaulukkoLista(3);
     }
 
     /**
      * Setteri.
      *
-     * @param lahto
+     * @param lahto Alku kohta
      */
     public void setLahto(boolean lahto) {
         this.valittu = lahto;
@@ -42,7 +42,7 @@ public class Ruutu {
     /**
      * Setteri.
      *
-     * @param maali
+     * @param maali loppu kohta
      */
     public void setMaali(boolean maali) {
         this.maali = maali;
@@ -51,7 +51,7 @@ public class Ruutu {
     /**
      * Getteri.
      *
-     * @return
+     * @return onko lähtökohta
      */
     public boolean isValittu() {
         return valittu;
@@ -60,7 +60,7 @@ public class Ruutu {
     /**
      * Getteri.
      *
-     * @return
+     * @return onko maali
      */
     public boolean isMaali() {
         return maali;
@@ -69,7 +69,7 @@ public class Ruutu {
     /**
      * Lisätään uusi kultuyhteys.
      *
-     * @param ruutu
+     * @param ruutu uusi naapuri
      */
     public void addNaapurit(Ruutu ruutu) {
         naapurit.lisaa(ruutu);
@@ -78,7 +78,7 @@ public class Ruutu {
     /**
      * Metodi kertoo, onko ruuduilla kulkuyhteys toisiinsa.
      *
-     * @param ruutu
+     * @param ruutu Ruutu
      * @return onko kulkuyhteys
      */
     public boolean isNaapuri(Ruutu ruutu) {
@@ -97,34 +97,34 @@ public class Ruutu {
     /**
      * Asetetaan ruutu käydyksi.
      *
-     * @param visited
+     * @param visited käyty
      */
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
 
     /**
-     *
-     * @param reitti
+     *Setteri.
+     * @param reitti asetetaan reitiksi
      */
     public void setReitti(boolean reitti) {
         this.reitti = reitti;
     }
 
     /**
-     *
-     * @return
+     *Onko reitti.
+     * @return boolean
      */
     public boolean isReitti() {
         return reitti;
     }
 
     /**
-     *
-     * @return
+     *Metodi palauttaa kaikki naapurit.
+     * @return kulkuyhteydet
      */
     public Object[] getNaapurit() {
-        return  naapurit.getLista();
+        return naapurit.getLista();
     }
 
 }

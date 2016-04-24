@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package labyrintti;
 
-import labyrintti.Kayttoliittyma;
+import kayttoliittyma.Kayttoliittyma;
 
 /**
- *Mainin sisältävä luokka
+ * Mainin sisältävä luokka.
+ *
  * @author tminka
  */
 public class LabyrinttiPeli {
 
     /**
      * Main metodi, kutsuu Kayttoliittymaluokan run() metodia.
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {

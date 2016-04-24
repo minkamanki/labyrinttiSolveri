@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package labyrintti;
+package kayttoliittyma;
 
-import logiikka.Labyrintti;
+import pelilogiikka.Labyrintti;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -22,7 +22,7 @@ public class Piirtoalusta extends JPanel {
     /**
      * Konstruktori.
      *
-     * @param l
+     * @param l labyrintti
      */
     public Piirtoalusta(Labyrintti l) {
         this.labyrintti = l;
@@ -42,7 +42,7 @@ public class Piirtoalusta extends JPanel {
 
     private void piirraKentta(Graphics g) {
         g.setColor(Color.black);
-        g.drawRect(20, 20, 2 + labyrintti.getKoko() * 20, 2 + labyrintti.getKoko() * 20);
+        g.drawRect(21, 21, 1 + labyrintti.getKoko() * 20, 1 + labyrintti.getKoko() * 20);
         for (int i = 0; i < labyrintti.getKoko(); i++) {
             for (int j = 0; j < labyrintti.getKoko(); j++) {
                 piirraLaatta(i, j, g);
@@ -57,8 +57,11 @@ public class Piirtoalusta extends JPanel {
             g.setColor(Color.GREEN);
         } else if (labyrintti.getRuutu(x, y).isMaali()) {
             g.setColor(Color.yellow);
+        } else if (labyrintti.getRuutu(x, y).isReitti()) {
+            g.setColor(new Color(230, 203, 255));
         }
         g.fillRect(22 + (x * 20), 22 + (y * 20), 20, 20);
+
         piirraSeinat(x, y, g);
     }
 

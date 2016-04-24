@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package labyrintti;
+package kayttoliittyma;
 
-import logiikka.Labyrintti;
+import pelilogiikka.Labyrintti;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
-import logiikka.Ratkaisija;
+import pelilogiikka.Ratkaisija;
 
 /**
  * Käyttöliittymä luokka sisältää kaikki ohjelman framet ja implementtaa
@@ -78,7 +78,7 @@ public class Kayttoliittyma implements MouseListener {
     /**
      * Metodi, joka tarkistaa, että annettu koko on 10-40.
      *
-     * @param koko
+     * @param koko labyrintille annettu koko
      * @return boolean onko annettu koko sallittu
      */
     public boolean sallittu(int koko) {
@@ -113,14 +113,13 @@ public class Kayttoliittyma implements MouseListener {
         }
 
         if (me.getSource() == ratkaise) {
-            ratkaise.setText("Ei toimi vielä :D");
             ratkaisija();
-            
+
         }
     }
 
     /**
-     * A
+     * A.
      *
      * @param me
      */
@@ -129,7 +128,7 @@ public class Kayttoliittyma implements MouseListener {
     }
 
     /**
-     * A
+     * A.
      *
      * @param me
      */
@@ -138,7 +137,7 @@ public class Kayttoliittyma implements MouseListener {
     }
 
     /**
-     * A
+     * A.
      *
      * @param me
      */
@@ -147,7 +146,7 @@ public class Kayttoliittyma implements MouseListener {
     }
 
     /**
-     * A
+     * A.
      *
      * @param me
      */
@@ -156,8 +155,12 @@ public class Kayttoliittyma implements MouseListener {
     }
 
     private void ratkaisija() {
+        frame.remove(ratkaise);
         Ratkaisija solveri = new Ratkaisija(labyrintti.getLabyrintti());
         solveri.luoPuu();
+        solveri.ratkaiseLabyrintti();
+        frame.pack();
+        frame.setSize((koko * 20) + 42, (koko * 20) + 42);
     }
 
 }

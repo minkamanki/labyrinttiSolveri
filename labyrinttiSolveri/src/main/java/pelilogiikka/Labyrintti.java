@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logiikka;
-
+package pelilogiikka;
 
 /**
  * Luokassa luodaan labyrintti, ja se sisältää taulukon Ruutu oliosta.
@@ -15,44 +14,45 @@ public class Labyrintti {
 
     private final int koko;
     private Ruutu[][] alue;
-    
 
     /**
      * Konstruktori.
      *
-     * @param koko
+     * @param koko saatu koko
      */
     public Labyrintti(int koko) {
         this.koko = koko;
     }
 
     /**
-     * Metodissa luodaan Ruudut ja kursutaan poistaSeinat metodia.
-     * Aseteaan myös lähtö ja maali.
+     * Metodissa luodaan Ruudut ja kursutaan poistaSeinat metodia. Aseteaan myös
+     * lähtö ja maali.
      */
     public void luoLabyrintti() {
         alue = new Ruutu[koko][koko];
-        //Tähän tulee algoritmi labyrintin luomiseksi
 
         for (int i = 0; i < koko; i++) {
             for (int j = 0; j < koko; j++) {
                 alue[i][j] = new Ruutu();
             }
         }
-        poistaSeinia(0, 0);
+
+        poistaSeinia(0, 0); //TÄMÄ LUO TAULUKOSTA LABYRINTIN
+
         alue[0][0].setLahto(true);
         alue[koko - 1][koko - 1].setMaali(true);
     }
 
     /**
-     *Metodi toimii rekursiivisesti ja se luo yhteyksiä Ruutujen välille.
+     * Metodi toimii rekursiivisesti ja se luo yhteyksiä Ruutujen välille.
+     *
      * @param x Ruudun koordinaatti
      * @param y Ruudun koordinaatti
      */
     public void poistaSeinia(int x, int y) {
-        
+
         alue[x][y].setVisited(true);
-        
+
         if (umpikuja(x, y)) {
             return;
         }
@@ -63,28 +63,28 @@ public class Labyrintti {
 
         while (!arvottu) {
             double r = Math.ceil(Math.random() * 4);
-            if (r == 1) {//x+1,y
+            if (r == 1) {
                 n = x + 1;
                 m = y;
-            } else if (r == 2) {//x-1,y
+            } else if (r == 2) {
                 n = x - 1;
                 m = y;
-            } else if (r == 3) {//x,y+1
+            } else if (r == 3) {
                 n = x;
                 m = y + 1;
-            } else if (r == 4) {//x,y-1
+            } else if (r == 4) {
                 n = x;
                 m = y - 1;
             }
             if (sallittu(n, m) && !alue[n][m].isVisited()) {
                 alue[x][y].addNaapurit(alue[n][m]);
                 alue[n][m].addNaapurit(alue[x][y]);
-                
+
                 arvottu = true;
 
             }
         }
-        
+
         poistaSeinia(n, m);
         if (!umpikuja(x, y)) {
             poistaSeinia(x, y);
@@ -104,8 +104,8 @@ public class Labyrintti {
     /**
      * Palauttaa Ruudun kyseisestä sijainnista.
      *
-     * @param x
-     * @param y
+     * @param x sijainti
+     * @param y sijainti
      * @return Ruutu
      */
     public Ruutu getRuutu(int x, int y) {
@@ -113,11 +113,12 @@ public class Labyrintti {
     }
 
     /**
-     *Palaututeaan tietoa eteenpäin, onko kahden ruudun välillä yhteyttä.
-     * @param x
-     * @param y
-     * @param n
-     * @param m
+     * Palaututeaan tietoa eteenpäin, onko kahden ruudun välillä yhteyttä.
+     *
+     * @param x sijainti
+     * @param y sijainti
+     * @param n sijainti
+     * @param m sijainti
      * @return onko yhteys
      */
     public boolean onkoNaapuri(int x, int y, int n, int m) {
@@ -135,9 +136,10 @@ public class Labyrintti {
     }
 
     /**
-     *Metodi tarkistaa, onko sijainti sallittu.
-     * @param x
-     * @param y
+     * Metodi tarkistaa, onko sijainti sallittu.
+     *
+     * @param x sijainti
+     * @param y sijainti
      * @return onko sallittu
      */
     public boolean sallittu(int x, int y) {
@@ -145,9 +147,10 @@ public class Labyrintti {
     }
 
     /**
-     *Metodi kertoo labyrintin luojalle, onko se joutunut "umpikujaan".
-     * @param x
-     * @param y
+     * Metodi kertoo labyrintin luojalle, onko se joutunut "umpikujaan".
+     *
+     * @param x sijainti
+     * @param y sijainti
      * @return onko umpikuja
      */
     public boolean umpikuja(int x, int y) {

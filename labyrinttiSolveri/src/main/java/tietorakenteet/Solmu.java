@@ -5,37 +5,41 @@
  */
 package tietorakenteet;
 
-import logiikka.Ruutu;
+import pelilogiikka.Ruutu;
 
 /**
- *Puun solmua kuvaava luokka.
+ * Puun solmua kuvaava luokka.
+ *
  * @author tminka
  */
 public class Solmu {
 
     private Solmu parent;
-    private taulukkoLista lapset;
+    private TaulukkoLista lapset;
     private final Ruutu ruutu;
 
     /**
-     *Konstruktoriin annetaan ruutu, jota solmu kuvaa.
-     * @param ruutu
+     * Konstruktoriin annetaan ruutu, jota solmu kuvaa.
+     *
+     * @param ruutu solmua vastaava ruutu
      */
     public Solmu(Ruutu ruutu) {
         this.ruutu = ruutu;
-        lapset = new taulukkoLista(3);
+        lapset = new TaulukkoLista(3);
     }
 
     /**
-     *Asettetaan solmun parent solmu.
-     * @param parent
+     * Asettetaan solmun parent solmu.
+     *
+     * @param parent solmun vanhempi
      */
     public void setParent(Solmu parent) {
         this.parent = parent;
     }
 
     /**
-     *getteri
+     * Getteri.
+     *
      * @return parent
      */
     public Solmu getParent() {
@@ -43,29 +47,30 @@ public class Solmu {
     }
 
     /**
-     *palautettaan lapset.
-     * @return
+     * Palautettaan lapset.
+     *
+     * @return solmun lapset
      */
     public Object[] getLapset() {
         return lapset.getLista();
     }
 
     /**
-     *Palautettaan solmun ruutu.
-     * @return
+     * Palautettaan solmun ruutu.
+     *
+     * @return oma ruutu
      */
     public Ruutu getRuutu() {
         return ruutu;
     }
 
     /**
-     *Asetetaan uusi lapsi.
-     * @param lapsi
+     * Asetetaan uusi lapsi.
+     *
+     * @param lapsi uusi lapsi
      */
     public void setLapset(Solmu lapsi) {
         this.lapset.lisaa(lapsi);
     }
-
-    
 
 }
