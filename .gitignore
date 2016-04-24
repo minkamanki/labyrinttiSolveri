@@ -1,2 +1,7 @@
 /labyrintti/nbproject/private/
 *~
+/labyrintti/build/
+/labyrintti/dist/
+/Maze/nbproject/private/
+/Maze/build/
+/labyrinttiSolveri/target/
