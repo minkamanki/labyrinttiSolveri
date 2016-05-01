@@ -12,7 +12,7 @@ package tietorakenteet;
 public class TaulukkoLista {
 
     private Object[] lista;
-    private int ekaTyhja = 0;
+    private int head = 0;
 
     /**
      * Konsruktori.
@@ -37,28 +37,13 @@ public class TaulukkoLista {
      */
     public void lisaa(Object o) {
 
-        if (ekaTyhja < lista.length) {
-            lista[ekaTyhja] = o;
-            ekaTyhja++;
+        if (head < lista.length) {
+            lista[head] = o;
+            head++;
         } else {
             kasvataListaa(lista.length * 2);
             lisaa(o);
         }
-
-    }
-
-    /**
-     *Metodi poistaa halutun olion, syntyy kokonaan uusi taulukko.
-     * @param o poistettava olio
-     */
-    public void poista(Object o) {
-        Object[] apu = new Object[lista.length];
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i] != o) {
-                apu[i] = lista[i];
-            }
-        }
-        lista = apu;
 
     }
 
@@ -102,12 +87,12 @@ public class TaulukkoLista {
         return lista.length;
     }
 
-    /**
-     *Palautetaan olio halutusta listan kohdasta.
-     * @param i kohta
-     * @return olio kohdasta
-     */
-    public Object olio(int i) {
-        return lista[i];
-    }
+//    /**
+//     *Palautetaan olio halutusta listan kohdasta.
+//     * @param i kohta
+//     * @return olio kohdasta
+//     */
+//    public Object olio(int i) {
+//        return lista[i];
+//    }
 }

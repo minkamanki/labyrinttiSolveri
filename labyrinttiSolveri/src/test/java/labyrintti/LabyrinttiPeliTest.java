@@ -8,6 +8,7 @@ package labyrintti;
 import org.junit.Test;
 import pelilogiikka.Labyrintti;
 import pelilogiikka.Ratkaisija;
+import tietorakenteet.Puu;
 
 /**
  *
@@ -17,13 +18,33 @@ public class LabyrinttiPeliTest {
 
     private Labyrintti l;
 
-
     @Test(timeout = 100)
     public void kokoHoito() {
         l = new Labyrintti(40);
         l.luoLabyrintti();
-        Ratkaisija solveri = new Ratkaisija(l.getLabyrintti());
-        solveri.luoPuu();
+        Puu puu = new Puu(l.getLabyrintti());
+        puu.luoPuu();
+        Ratkaisija solveri = new Ratkaisija(puu);
+        solveri.ratkaiseLabyrintti();
+    }
+
+    @Test(timeout = 100)
+    public void kokoHoitoIsompi() {
+        l = new Labyrintti(80);
+        l.luoLabyrintti();
+        Puu puu = new Puu(l.getLabyrintti());
+        puu.luoPuu();
+        Ratkaisija solveri = new Ratkaisija(puu);
+        solveri.ratkaiseLabyrintti();
+    }
+
+    @Test(timeout = 100)
+    public void kokoHoitoIsoin() {
+        l = new Labyrintti(100);
+        l.luoLabyrintti();
+        Puu puu = new Puu(l.getLabyrintti());
+        puu.luoPuu();
+        Ratkaisija solveri = new Ratkaisija(puu);
         solveri.ratkaiseLabyrintti();
     }
 

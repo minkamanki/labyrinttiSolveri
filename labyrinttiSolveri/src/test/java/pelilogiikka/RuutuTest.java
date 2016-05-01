@@ -10,7 +10,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *Testi luokka.
+ * Testi luokka.
+ *
  * @author tminka
  */
 public class RuutuTest {
@@ -65,10 +66,10 @@ public class RuutuTest {
      *
      */
     @Test
-    public void vaihto() {       
+    public void vaihto() {
         assertEquals(false, ruutu.isMaali());
     }
-    
+
     /**
      *
      */
@@ -77,5 +78,16 @@ public class RuutuTest {
         ruutu.setLahto(true);
         ruutu.setLahto(false);
         assertEquals(false, ruutu.isValittu());
+    }
+
+    @Test
+    public void reitti() {
+        ruutu.setReitti(true);
+        assertEquals(true, ruutu.isReitti());
+    }
+
+    @Test
+    public void reitti2() {
+        assertEquals(false, ruutu.isReitti());
     }
 }

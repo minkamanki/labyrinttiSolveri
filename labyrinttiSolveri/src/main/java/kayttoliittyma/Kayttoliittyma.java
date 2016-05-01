@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import pelilogiikka.Ratkaisija;
+import tietorakenteet.Puu;
 
 /**
  * Käyttöliittymä luokka sisältää kaikki ohjelman framet ja implementtaa
@@ -156,8 +157,9 @@ public class Kayttoliittyma implements MouseListener {
 
     private void ratkaisija() {
         frame.remove(ratkaise);
-        Ratkaisija solveri = new Ratkaisija(labyrintti.getLabyrintti());
-        solveri.luoPuu();
+        Puu puu = new Puu(labyrintti.getLabyrintti());
+        puu.luoPuu();
+        Ratkaisija solveri = new Ratkaisija(puu);
         solveri.ratkaiseLabyrintti();
         frame.pack();
         frame.setSize((koko * 20) + 42, (koko * 20) + 42);

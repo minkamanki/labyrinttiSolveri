@@ -16,6 +16,7 @@ import pelilogiikka.Ruutu;
  */
 public class taulukkoListaTest {
 
+    private TaulukkoLista toinenLista;
     private TaulukkoLista lista;
     private Ruutu a;
     private Ruutu b;
@@ -26,10 +27,11 @@ public class taulukkoListaTest {
      */
     @Before
     public void setUp() {
-        lista = new TaulukkoLista(2);
+        lista = new TaulukkoLista(1);
         a = new Ruutu();
         b = new Ruutu();
         c = new Ruutu();
+        toinenLista = new TaulukkoLista();
     }
 
     /**
@@ -63,6 +65,43 @@ public class taulukkoListaTest {
         lista.lisaa(c);
 
         assertEquals(lista.contains(c), true);
+    }
+
+    @Test
+    public void listanKasvatus() {
+        lista.lisaa(a);
+        lista.lisaa(b);
+        lista.lisaa(c);
+        assertEquals(lista.koko(), 4);
+    }
+
+    @Test
+    public void contains() {
+        lista.lisaa(a);
+        lista.lisaa(b);
+        assertEquals(true, lista.contains(a));
+    }
+
+    @Test
+    public void contains2() {
+        lista.lisaa(a);
+        lista.lisaa(b);
+        assertEquals(true, lista.contains(b));
+    }
+
+    @Test
+    public void contains3() {
+        assertEquals(false, lista.contains(b));
+    }
+
+    @Test
+    public void koko() {
+        assertEquals(1, lista.koko());
+    }
+
+    @Test
+    public void automaattiKoko() {
+        assertEquals(16, toinenLista.koko());
     }
 
 }

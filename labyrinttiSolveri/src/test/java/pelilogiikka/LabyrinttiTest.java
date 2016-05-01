@@ -5,6 +5,8 @@
  */
 package pelilogiikka;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -90,5 +92,35 @@ public class LabyrinttiTest {
     public void sallittu6() {
         assertEquals(false, labyrintti.sallittu(10, 1));
     }
-    
+
+    @Test
+    public void poistaSeiniaSuoritettu() {
+        labyrintti.luoLabyrintti();
+        Object[] o = labyrintti.getRuutu(0, 0).getNaapurit();
+        Object d = o[0];
+        assertThat(d, not(equalTo(null)));
+    }
+
+    @Test
+    public void lahtoLuotu() {
+        labyrintti.luoLabyrintti();
+        assertEquals(true, labyrintti.getRuutu(0, 0).isValittu());
+
+    }
+
+    @Test
+    public void maaliLuotu() {
+        labyrintti.luoLabyrintti();
+        assertEquals(true, labyrintti.getRuutu(9, 9).isMaali());
+
+    }
+
+    @Test
+    public void naapuriTesti() {
+        labyrintti.luoLabyrintti();
+        labyrintti.getRuutu(0, 0).addNaapurit(labyrintti.getRuutu(5, 5));
+        assertEquals(true, labyrintti.onkoNaapuri(0, 0, 5, 5));
+    }
+
+
 }
